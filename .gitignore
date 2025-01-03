@@ -1,3 +1,12 @@
+/src/bioTextAugPackage/global_variables.env
+/tests/global_variables.env
+/tests/gradio_interface
+/src/bioTextAugPackage/main.py
+
+/src/__pycache__/
+/src/bioTextAugPackage/__pycache__/
+.idea/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
