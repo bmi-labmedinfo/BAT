@@ -1,28 +1,18 @@
 [build-system]
-requires = [
-    "setuptools>=69",
-    "wheel"
-]
+requires = ["setuptools>=69","wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "bioTextAugPackage"
+name = "BiomedicalAugmentation-for-Text"
 version = "0.0.1"
 authors = [
   { name="LauraBergomi", email="laura.bergomi01@universitadipavia.it" },
 ]
 description = "A Biomedical domain-specific Text Augmentation tool"
-keywords = ""
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 classifiers = [
     "License :: Free for non-commercial use",
-    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.10",
     "Operating System :: OS Independent"
 ]
-
-[project.urls]
-Homepage = "https://github.com/..."
-Documentation = ""
-Repository = ""
-Issues = "https://github.com/..."
