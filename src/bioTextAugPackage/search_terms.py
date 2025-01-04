@@ -7,7 +7,7 @@ Functions:
     get_concepts_for_code(str, List[str], str, str) -> List[str]
     retrieve_names_from_cui(str, List[str], str, str) -> List[str]
 """
-from src.bioTextAugPackage.init import *
+from .init import *
 import requests
 
 

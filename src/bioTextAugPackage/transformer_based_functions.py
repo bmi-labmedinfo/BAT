@@ -11,8 +11,8 @@ Functions:
      _postprocess(str) -> List[str]
      llm_generation(str, int, str, AutoTokenizer, str, callable, str, str, bool) -> List[str]
 """
-from src.bioTextAugPackage.init import *
-from src.bioTextAugPackage.openaicaller import *
+from .init import *
+from .openaicaller import *
 
 
 # ================================================

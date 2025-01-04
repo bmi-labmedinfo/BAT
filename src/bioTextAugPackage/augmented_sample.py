@@ -4,10 +4,10 @@ Main class to invoke functions from the Biomedical Augmentation for Text package
 Classes:
     AugmentedSample
 """
-from src.bioTextAugPackage.init import *
-import src.bioTextAugPackage.knowledge_based_functions as kb
-import src.bioTextAugPackage.metrics as metrics
-import src.bioTextAugPackage.transformer_based_functions as tb
+from .init import *
+import knowledge_based_functions as kb
+import metrics as metrics
+import transformer_based_functions as tb
 
 
 class AugmentedSample:

@@ -9,7 +9,7 @@ Functions:
      wn_language(str) -> str
      synonym_replacement(str, str, int, dict) ->
 """
-from src.bioTextAugPackage.search_terms import *
+from .search_terms import *
 
 
 def _clean_vocab(vocabulary: List[str]):

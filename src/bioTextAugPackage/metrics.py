@@ -7,7 +7,7 @@ Functions:
     compute_similarity(str, str, str) -> float
 """
 
-from src.bioTextAugPackage.init import *
+from .init import *
 
 
 def compute_overlap(synthetic_data: str, src_data: str, tokenizer):
