@@ -162,7 +162,7 @@ def _postprocess(input_text: str):
     #    cleaned_text = cleaned_text+"."
 
     list_item_pattern = re.compile(
-        r"[^\d*\-•]*^\s*(\d+\.*\s+|\d+\)|\d+-|[a-zA-Z]\.\s+|[a-zA-Z]\)|[a-zA-Z]\.*|[-•*]\s+)(.+?)$",
+        r"^\s*([*•-]\s+|\d+\.\s)+(.+?)$",
         re.VERBOSE | re.MULTILINE)
     list_cleaned_text = [match.group(2).strip() for match in list_item_pattern.finditer(cleaned_text)]
 

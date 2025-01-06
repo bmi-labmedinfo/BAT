@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "BiomedicalAugmentation-for-Text"
-version = "0.0.5"
+version = "0.0.6"
 authors = [
   { name="LauraBergomi", email="laura.bergomi01@universitadipavia.it" },
 ]
