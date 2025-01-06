@@ -105,7 +105,7 @@ A more extensive example, including advanced usage, can be found in [this notebo
 ## Contacts and Useful Links
 
 *   **Repository maintainer**: Laura Bergomi  
-    [![Email Badge][gmail-shield]](gmail-url) [![LinkedIn][linkedin-shield]](linkedin-url)  
+    [![Email Badge][gmail-shield]][gmail-url] [![LinkedIn][linkedin-shield]][linkedin-url] 
 
 *   **Project Link**: [https://github.com/laurabergomi/BAT](https://github.com/laurabergomi/BAT)
 
