@@ -5,9 +5,9 @@ Classes:
     AugmentedSample
 """
 from .init import *
-import knowledge_based_functions as kb
-import metrics as metrics
-import transformer_based_functions as tb
+from .knowledge_based_functions import *
+from .metrics import *
+from .transformer_based_functions import *
 
 
 class AugmentedSample:
@@ -140,9 +140,9 @@ class AugmentedSample:
         Creation of a synonym dictionary for medical terms.
         :return: dict: synonym dictionary
         """
-        synonyms_dict = kb.synonyms_dict_definition(src_data=self.src_data, src_tokenizer=self.config.base_tokenizer,
-                                                    src_lang=self.src_lang, api_key=self.config.umls_api_key,
-                                                    verbose=self.customizable_params['verbose'])
+        synonyms_dict = synonyms_dict_definition(src_data=self.src_data, src_tokenizer=self.config.base_tokenizer,
+                                                 src_lang=self.src_lang, api_key=self.config.umls_api_key,
+                                                 verbose=self.customizable_params['verbose'])
         return synonyms_dict
 
     def synonym_replacement(self):
@@ -153,8 +153,8 @@ class AugmentedSample:
         """
         if self.config.umls_api_key is not None and self.config.umls_api_key != "":
             self.synonyms_dict = self._create_synonyms_dict()
-        new_data = kb.synonym_replacement(text=self.src_data, src_lang=self.src_lang,
-                                          med_synonyms_dict=self.synonyms_dict, n_new_data=self.n_synth_data)
+        new_data = synonym_replacement(text=self.src_data, src_lang=self.src_lang,
+                                       med_synonyms_dict=self.synonyms_dict, n_new_data=self.n_synth_data)
         return new_data
 
     def med_synonym_replacement(self):
@@ -167,8 +167,8 @@ class AugmentedSample:
             print(f"{StringColors.WARNING}> UMLS API_KEY must be inserted!")
             sys.exit(1)
         self.synonyms_dict = self._create_synonyms_dict()
-        new_data = kb.med_synonym_replacement(text=self.src_data, synonyms_dict=self.synonyms_dict,
-                                              n_new_data=self.n_synth_data)
+        new_data = med_synonym_replacement(text=self.src_data, synonyms_dict=self.synonyms_dict,
+                                           n_new_data=self.n_synth_data)
         return new_data
 
     def back_translation(self):
@@ -189,8 +189,8 @@ class AugmentedSample:
             mt_model2 = MarianMTModel.from_pretrained(mt_model_name2)
             mt_tokenizer2 = MarianTokenizer.from_pretrained(mt_model_name2, clean_up_tokenization_spaces=True)
 
-            new_data = tb.back_translation(src_text=self.src_data, model1=mt_model1, tokenizer1=mt_tokenizer1,
-                                           model2=mt_model2, tokenizer2=mt_tokenizer2)
+            new_data = back_translation(src_text=self.src_data, model1=mt_model1, tokenizer1=mt_tokenizer1,
+                                        model2=mt_model2, tokenizer2=mt_tokenizer2)
             new_text.append(new_data)
 
         return new_text
@@ -200,8 +200,8 @@ class AugmentedSample:
         Masked_lm technique call.
         :return: List[str]: new data
         """
-        new_data = tb.masked_augmentation(src_text=self.src_data, ml_model_name=self.config.bert_model_name,
-                                          ml_tokenizer=self.config.bert_tokenizer, n_new_data=self.n_synth_data)
+        new_data = masked_augmentation(src_text=self.src_data, ml_model_name=self.config.bert_model_name,
+                                       ml_tokenizer=self.config.bert_tokenizer, n_new_data=self.n_synth_data)
         return new_data
 
     def llm_rephrasing(self):
@@ -214,11 +214,11 @@ class AugmentedSample:
             print(f"{StringColors.WARNING}> LLM API_KEY must be inserted!")
             sys.exit(1)
 
-        new_data = tb.llm_generation(src_text=self.src_data, n_new_data=self.n_synth_data, src_lang=self.src_lang,
-                                     tokenizer=self.config.base_tokenizer,
-                                     api_key=self.config.llm_api_key, caller_func=self.config.llm_caller,
-                                     medical_field=self.customizable_params['medical_field'],
-                                     verbose=self.customizable_params['verbose'])
+        new_data = llm_generation(src_text=self.src_data, n_new_data=self.n_synth_data, src_lang=self.src_lang,
+                                  tokenizer=self.config.base_tokenizer,
+                                  api_key=self.config.llm_api_key, caller_func=self.config.llm_caller,
+                                  medical_field=self.customizable_params['medical_field'],
+                                  verbose=self.customizable_params['verbose'])
         return new_data
 
     def run(self):
@@ -235,10 +235,10 @@ class AugmentedSample:
         # ===============================================
 
         for elem in tqdm(new_data, desc="Computing metrics"):
-            overlap_value = metrics.compute_overlap(synthetic_data=elem, src_data=self.src_data,
-                                                    tokenizer=self.config.base_tokenizer)
-            similarity_value = metrics.compute_similarity(synthetic_data=elem, src_data=self.src_data,
-                                                          se_model_name=self.config.se_model_name)
+            overlap_value = compute_overlap(synthetic_data=elem, src_data=self.src_data,
+                                            tokenizer=self.config.base_tokenizer)
+            similarity_value = compute_similarity(synthetic_data=elem, src_data=self.src_data,
+                                                  se_model_name=self.config.se_model_name)
             self.new_synth_data.append(elem)
             self.overlap_score.append(overlap_value)
             self.similarity_score.append(similarity_value)
