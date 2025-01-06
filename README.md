@@ -1,4 +1,4 @@
-# BAT - Biomedical Augmentation for Text <img src="logo.png" width="40" style="vertical-align:middle;"/>
+# BAT - Biomedical Augmentation for Text <img src="logo.png" width="60" style="vertical-align:middle;"/>
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Watchers][watchers-shield]][watchers-url]
@@ -18,9 +18,11 @@ Package for Biomedical Textual data Augmentation
 <!-- PACKAGE OVERVIEW -->
 # Package Overview
 This Python package consists of a Neuro-Symbolic pipeline, blending *knowledge-driven* and *data-driven* approaches.
-##Pipeline Components
+
+## Pipeline Components
+
 **Knowledge-Based Functions (*knowledge-driven*)**:
-* **`Med-Synonym Replacement`**: This function replaces medical terms with their synonyms based on structured UMLS domain knowledge.
+* **`Med-Synonym Replacement`**: This function replaces medical terms with their synonyms based on structured domain knowledge.
 * **`Synonym Replacement`**: A general-purpose synonym replacement function powered by linguistic resources.
 
 **Transformer-Based Functions (*data-driven*)**:
@@ -76,7 +78,6 @@ import  bioTextAugPackage.metrics as metrics
 config = Config()
 input_text = "No lytic lesions are observed at the vertebral levels included in the scans. No signs of listhesis."
 
-language = "english"
 src_lang = "en"
 trg_lang = "fr"
 
@@ -94,7 +95,7 @@ ans = tb.back_translation(src_text=input_text,
 
 print(ans)
 overlap_score = metrics.compute_overlap(synthetic_data=ans[0], src_data=input_text, tokenizer=config.base_tokenizer)
-similarity_score = metricscompute_similarity(synthetic_data=ans[0], src_data=input_text, se_model_name=config.se_model_name)
+similarity_score = metrics.compute_similarity(synthetic_data=ans[0], src_data=input_text, se_model_name=config.se_model_name)
 print(f"overlap_score: {overlap_score} - similarity_score: {similarity_score}")
 ```
 
@@ -104,9 +105,9 @@ A more extensive example, including advanced usage, can be found in [this notebo
 ## Contacts and Useful Links
 
 *   **Repository maintainer**: Laura Bergomi  
-    [![Email Badge][gmail-shield]](gmail-url) [![LinkedIn][linkedin-shield]] [linkedin-url]  
+    [![Email Badge][gmail-shield]](gmail-url) [![LinkedIn][linkedin-shield]](linkedin-url)  
 
-*   **Project Link**: [https://github.com/laurabergomi/BAT]()
+*   **Project Link**: [https://github.com/laurabergomi/BAT](https://github.com/laurabergomi/BAT)
 
 *   **Package Link**: [https://test.pypi.org/project/BiomedicalAugmentation-for-Text/](https://test.pypi.org/project/BiomedicalAugmentation-for-Text/)
 
