@@ -8,6 +8,7 @@ from .init import *
 from .knowledge_based_functions import *
 from .metrics import *
 from .transformer_based_functions import *
+from typing import Literal
 
 
 class AugmentedSample:
@@ -61,12 +62,14 @@ class AugmentedSample:
             run the text augmentation technique selected and return the new synthetic data.
     """
 
-    def __init__(self, config_params: Config, technique_tag: str, src_lang: str, src_data: str, n_synth_data: int = 1,
+    def __init__(self, config_params: Config,
+                 method: Literal["KB-synonym_replacement", "KB-med_synonym_replacement", "TB-back_translation", "TB-masked_lm", "TB-llm_rephrasing"],
+                 src_lang: str, src_data: str, n_synth_data: int = 1,
                  **kwargs):
         """
         Augmented sample class.
         :param config_params: config params
-        :param technique_tag: text-augmentation technique
+        :param method: text-augmentation technique
         :param src_lang: source data language (italian, english, spanish, french)
         :param src_data: source data to augment
         :param n_synth_data: max number of new samples as output
@@ -84,7 +87,7 @@ class AugmentedSample:
             "TB-masked_lm": self.masked_lm,
             "TB-llm_rephrasing": self.llm_rephrasing
         }
-        self.technique_tag = technique_tag
+        self.technique_tag = method
         if self.technique_tag not in self.techniques.keys():
             print(
                 f"{StringColors.WARNING}> The technique tag inserted is not valid! Valid options are: "

@@ -2,6 +2,9 @@
 /tests/global_variables.env
 /tests/gradio_interface
 /src/bioTextAugPackage/main.py
+/tests/package_tests.ipynb
+/src/*.egg-info
+build
 
 /src/__pycache__/
 /src/bioTextAugPackage/__pycache__/
