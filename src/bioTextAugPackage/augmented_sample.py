@@ -71,7 +71,7 @@ class AugmentedSample:
         :param src_data: source data to augment
         :param n_synth_data: max number of new samples as output
         :param kwargs: additional customizable parameters (default:
-            - custom_intermediate_language: List[str] = random -> back-translation custom intermediate languages
+            - custom_intermediate_language: List[str] = random -> back-translation custom intermediate languages code
             - medical_field: str = None -> medical field context for llm_rephrasing generation
             - multilingual: bool = True -> let default models set to multilingual
             - verbose: bool = False -> print intermediate results)

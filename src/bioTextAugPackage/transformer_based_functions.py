@@ -26,8 +26,13 @@ def _translation(src_text: str, model, tokenizer):
     :param tokenizer: mt tokenizer
     :return: str: translated text
     """
-    translated = model.generate(**tokenizer(src_text, return_tensors="pt", padding=True))
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = model.to(device)
+
+    inputs = tokenizer(src_text, return_tensors="pt", padding=True).to(device)
+    translated = model.generate(**inputs)
     translated_text = tokenizer.decode(translated[0], skip_special_tokens=True)
+
     return translated_text
 
 
