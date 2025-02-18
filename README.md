@@ -35,8 +35,8 @@ This Python package consists of a Neuro-Symbolic pipeline, blending *knowledge-d
 ### Requirements
 
 1.  **Unified Medical Language System® (UMLS®) License**:
-* Mandatory for using the `Med-Synonym Replacement` component.
-* Optional for the `Synonym Replacement`.
+* Mandatory for using the `Med-synonym replacement` component.
+* Optional for the `General synonym replacement`.
 2.  **LLM Functional Block**:
 * A functional block with any preferred (open source or proprietary) LLM must be configured to use the `Rephrasing` component.
 * Alternatively, you can use the default *gpt-4o-mini* model by providing your **personal API key**.
