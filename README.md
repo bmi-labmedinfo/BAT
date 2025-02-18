@@ -13,7 +13,7 @@
 **Keywords**: *Data augmentation, Neuro-Symbolic AI, NLP, LLM, UMLS* </b>
 
 ------------------------------
-Package for Biomedical Textual data Augmentation
+A Toolkit for Biomedical Text Augmentation
 
 <!-- PACKAGE OVERVIEW -->
 # Package Overview
@@ -21,14 +21,14 @@ This Python package consists of a Neuro-Symbolic pipeline, blending *knowledge-d
 
 ## Pipeline Components
 
-**Knowledge-Based Functions (*knowledge-driven*)**:
-* **`Med-Synonym Replacement`**: This function replaces medical terms with their synonyms based on structured domain knowledge.
-* **`Synonym Replacement`**: A general-purpose synonym replacement function powered by linguistic resources.
+**Knowledge-Based perturbation (*knowledge-driven*)**:
+* **`Med-synonym replacement`**: Replaces medical terms with one of their formalized synonyms from structured domain knowledge (UMLS Metathesaurus).
+* **`General synonym replacement`**: Replaces terms with one of their general-purpose synonyms from Wordnet.
 
-**Transformer-Based Functions (*data-driven*)**:
-* **`Back-Translation`**: Generates rephrased versions of input text using back-translation through multilingual models.
-* **`Masked Language Modelling`**: Fills masked words in the input text based on the in-context predictions of language models.
-* **`LLM Rephrasing`**: Rewrites text leveraging the capabilities of LLMs.
+**Transformer-Based perturbation (*data-driven*)**:
+* **`Back-translation`**: Translates text into an intermediate language and then back into the original language using multilingual MT models.
+* **`Contextual word prediction`**: Fills in masked single-token words within the input text based on the in-context predictions from BERT-based language models.
+* **`Rephrasing`**: Rewrites text using the capabilities of LLMs.
 
 
 <!-- REQUIREMENTS -->
@@ -38,7 +38,7 @@ This Python package consists of a Neuro-Symbolic pipeline, blending *knowledge-d
 * Mandatory for using the `Med-Synonym Replacement` component.
 * Optional for the `Synonym Replacement`.
 2.  **LLM Functional Block**:
-* A functional block with any preferred (open source or proprietary) LLM must be configured to use the `LLM Rephrasing` component.
+* A functional block with any preferred (open source or proprietary) LLM must be configured to use the `Rephrasing` component.
 * Alternatively, you can use the default *gpt-4o-mini* model by providing your **personal API key**.
 
 <!-- INSTALLATION -->
